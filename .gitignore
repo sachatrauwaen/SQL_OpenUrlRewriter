@@ -27,3 +27,9 @@
 *.i*86
 *.x86_64
 *.hex
+Bin/
+web.Debug.config
+obj/
+web.Release.config
+web.config
+packages/

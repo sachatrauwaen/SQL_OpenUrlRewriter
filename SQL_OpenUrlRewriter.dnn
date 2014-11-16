@@ -1,0 +1,68 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="Sql_OpenUrlRewriter" type="Provider" version="01.00.00">
+      <friendlyName>Sql_OpenUrlRewriter</friendlyName>
+      <description>Satrabel Sql OpenUrlRewriter provider</description>
+      <iconFile>Images/icon_extensions.gif</iconFile>
+      <owner>
+        <name>Satrabel</name>
+        <organization>Satrabel</organization>
+        <url>http://www.satrabel.be</url>
+        <email>support@satrabel.com</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <dependencies>
+        <dependency type="CoreVersion">07.02.00</dependency>
+        <dependency type="package">OpenUrlRewriter</dependency>
+      </dependencies>
+
+      <components>
+
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/Sql_OpenUrlRewriter</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+
+        <component type="Assembly">
+          <assemblies>
+            <basePath>bin</basePath>
+            <assembly>
+              <path>bin</path>
+              <name>Satrabel.OpenUrlRewriter.Sql.dll</name>
+            </assembly>
+          </assemblies>
+        </component>
+
+        <component type="Config">
+          <config>
+            <configFile>web.config</configFile>
+            <install>
+              <configuration>
+                <nodes>
+                  <node path="/configuration/dotnetnuke/urlRule/providers"
+                        action="update" key="name" collision="ignore">
+                    <add name="sqlUrlRuleProvider" type="Satrabel.HttpModules.Provider.SqlUrlRuleProvider, Satrabel.OpenUrlRewriter.Sql" />
+                  </node>
+                </nodes>
+              </configuration>
+            </install>
+            <uninstall>
+              <configuration>
+                <nodes>
+                  <node path="/configuration/dotnetnuke/urlRule/providers/add[@name='sqlUrlRuleProvider']"
+                        action="remove" />
+                </nodes>
+              </configuration>
+            </uninstall>
+          </config>
+        </component>
+
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>
