@@ -31,7 +31,8 @@ namespace Satrabel.HttpModules.Provider
             {
                 foreach (var query in queries)
                 {
-                    SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SiteSqlServer"].ConnectionString);
+                    //SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SiteSqlServer"].ConnectionString);
+                    SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings[query.ConnectionStringName].ConnectionString);
                     SqlCommand cmd = new SqlCommand();
                     SqlDataReader reader;
                     //cmd.CommandText = "SELECT * FROM OpenUrlRewriter_CustomUrlRule WHERE PortalId = " + PortalId;
